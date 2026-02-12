@@ -1,4 +1,4 @@
-# ZhenWusi's Blog
+# 九九的个人博客
 
 基于 Hexo 的个人技术博客，托管于 GitHub Pages。
 
@@ -40,18 +40,6 @@ excerpt: 文章摘要（可选）
 正文内容，支持标准 Markdown 语法。
 ```
 
-### 嵌入视频
-
-```markdown
-<iframe src="//player.bilibili.com/player.html?bvid=BV1xx411c7mD" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
-```
-
-### 嵌入音乐
-
-```markdown
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=歌曲ID&auto=0&height=66"></iframe>
-```
-
 ## 项目结构
 
 ```
@@ -68,17 +56,4 @@ excerpt: 文章摘要（可选）
 └── scaffolds/           # 文章模板
 ```
 
-## 主题配置
 
-编辑 `themes/flavor/_config.yml` 可自定义：
-
-- **导航菜单**、**个人信息**、**社交链接**
-- **封面图片**、**默认文章封面**
-- **评论系统**（Utterances，基于 GitHub Issues）
-- **音乐播放器**（网易云音乐歌单）
-- **友情链接**
-- **深色模式**
-
-## License
-
-MIT
