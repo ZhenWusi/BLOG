@@ -5,7 +5,7 @@
 
 # 站点信息
 title: 九九的个人博客
-subtitle: '记录技术与生活'
+subtitle: "龙出海，虎下山，世间万事，风云变幻，苍黄翻覆。纵使波谲云诡，但制心一处，便无事不办。天定胜人，人定兮胜天。"
 description: '一个热爱技术的开发者的个人博客，分享编程、技术和生活感悟。'
 keywords:
   - 大语言模型
@@ -79,14 +79,7 @@ per_page: 8
 pagination_dir: page
 
 # 主题
-theme: flavor
-
-# 部署到 GitHub Pages
-deploy:
-  type: git
-  repo: https://github.com/ZhenWusi/ZhenWusi.github.io.git
-  branch: main
-  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+theme: NINE
 
 # RSS 订阅
 feed:
@@ -99,6 +92,11 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
+
+# APlayer 配置
+aplayer:
+  meting: true
+  asset_in_head: false
 
 # 站点地图
 sitemap:
@@ -117,3 +115,25 @@ search:
 # 字数统计
 wordcount:
   enable: true
+
+# 部署配置
+deploy:
+  type: git
+  repo: https://github.com/ZhenWusi/ZhenWusi.github.io.git
+  branch: gh-pages
+
+# MathJax 数学公式渲染
+mathjax:
+  enable: true
+  per_page: false
+  engine: 'mathjax'
+  cdn: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  config:
+    tex:
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      tags: 'ams'
+    options:
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      ignoreHtmlClass: 'tex2jax_ignore'
+      processHtmlClass: 'tex2jax_process'

@@ -1,0 +1,82 @@
+# ==========================================
+# NINE 主题配置文件
+# ==========================================
+
+# 导航菜单
+menu:
+  首页: /
+  归档: /archives
+  分类: /categories
+  标签: /tags
+  友链: /friends
+  关于: /about
+
+# 个人信息
+author:
+  name: ZhenWusi
+  avatar: /img/头像.jpg
+  description: "龙出海，虎下山，世间万事，风云变幻，苍黄翻覆。纵使波谲云诡，但制心一处，便无事不办。天定胜人，人定兮胜天。"
+  social:
+    github: https://github.com/ZhenWusi
+    email: mailto:zhenwusi@example.com
+
+# 首页封面
+cover:
+  # 首页大图（随机选择本地背景图）
+  home_bg: /img/background/
+  # 默认文章封面图（随机精选）
+  default_post_covers:
+  
+# 侧边栏
+sidebar:
+  enable: true
+  position: right
+  widgets:
+    - profile
+    - recent_posts
+    - categories
+    - tags
+
+# 文章配置
+post:
+  toc: true
+  word_count: true
+  read_time: true
+  copyright: true
+
+# 评论系统 - 暂时禁用（需要安装 utterances 应用）
+comments:
+  enable: true
+  type: utterances
+  utterances:
+    repo: ZhenWusi/ZhenWusi.github.io
+    issue_term: pathname
+    theme: github-light
+    label: 💬 评论
+
+# 音乐播放器 - 网易云音乐
+music:
+  enable: true
+  # 网易云音乐歌单 ID
+  netease_playlist_id: 2993057618
+  autoplay: true
+  # 播放模式：order(顺序), random(随机), single(单曲循环)
+  play_mode: random
+
+# 友情链接
+friends:
+  - name: GitHub
+    url: https://github.com
+    avatar: https://github.githubassets.com/favicons/favicon-dark.svg
+    desc: 全球最大的代码托管平台
+
+# 页脚
+footer:
+  since: 2025
+  icp: ""
+  powered: true
+
+# 统计（可选）
+analytics:
+  enable: false
+  google_analytics_id: ""

@@ -1,0 +1,19 @@
+<!-- 评论系统组件 -->
+<% if (theme.comments && theme.comments.enable) { %>
+  <div class="comment-section" id="comments">
+    <h3 class="comment-title"><i class="fas fa-comments"></i> 评论区</h3>
+
+    <% if (theme.comments.type === 'utterances') { %>
+      <!-- Utterances 评论（基于 GitHub Issues，无需后端） -->
+      <script
+        src="https://utteranc.es/client.js"
+        repo="<%= theme.comments.utterances.repo %>"
+        issue-term="<%= theme.comments.utterances.issue_term %>"
+        theme="<%= theme.comments.utterances.theme %>"
+        label="<%= theme.comments.utterances.label %>"
+        crossorigin="anonymous"
+        async>
+      </script>
+    <% } %>
+  </div>
+<% } %>

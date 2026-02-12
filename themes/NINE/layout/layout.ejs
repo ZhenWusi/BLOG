@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="<%= config.language %>">
+<head>
+  <!-- 基本 meta 标签 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- SEO meta 标签 -->
+  <title><%= page.title ? page.title + ' | ' + config.title : config.title %></title>
+  <meta name="description" content="<%= page.excerpt ? strip_html(page.excerpt).substring(0, 150) : config.description %>">
+  <meta name="keywords" content="<%= (page.tags && page.tags.length ? page.tags.map(t => t.name).join(',') : (config.keywords || []).join(',')) %>">
+  <meta name="author" content="<%= config.author %>">
+
+  <!-- Open Graph 社交分享 -->
+  <meta property="og:title" content="<%= page.title || config.title %>">
+  <meta property="og:description" content="<%= page.excerpt ? strip_html(page.excerpt).substring(0, 150) : config.description %>">
+  <meta property="og:type" content="<%= is_post() ? 'article' : 'website' %>">
+  <meta property="og:url" content="<%= url %>">
+  <meta property="og:image" content="<%= url_for('/img/头像.jpg') %>">
+  <meta property="og:image:alt" content="<%= config.author %>的头像">
+
+  <!-- 图标 -->
+  <link rel="icon" href="/img/头像.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="/img/头像.jpg">
+  <link rel="shortcut icon" href="/img/头像.jpg">
+
+  <!-- Google Fonts - Noto Sans SC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- 主样式表 -->
+  <%- css('css/style') %>
+</head>
+<body>
+  <!-- 全局加载动画 -->
+  <div id="loading-mask">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- 顶部导航栏 -->
+  <%- partial('_partial/header') %>
+
+  <!-- 页面主内容 -->
+  <main class="main-content">
+    <%- body %>
+  </main>
+
+  <!-- 页脚 -->
+  <%- partial('_partial/footer') %>
+
+  <!-- 回到顶部按钮 -->
+  <button id="back-to-top" title="回到顶部">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- 音乐播放器 -->
+  <% if (theme.music && theme.music.enable) { %>
+    <%- partial('_partial/music') %>
+  <% } %>
+
+  <!-- 主脚本 -->
+  <%- js('js/main') %>
+</body>
+</html>
