@@ -1,0 +1,56 @@
+<%
+/* 文章卡片组件 - 用于首页和归档页展示文章 */
+
+/* 获取文章封面图：优先使用文章设置，否则使用默认随机封面 */
+var covers = theme.cover.default_post_covers || [];
+var coverIndex = post.title ? post.title.length % covers.length : 0;
+var postCover = post.cover || covers[coverIndex] || '';
+%>
+
+<article class="post-card">
+  <!-- 文章封面图 -->
+  <% if (postCover) { %>
+    <a href="<%- url_for(post.path) %>" class="post-card-cover">
+      <img src="<%= postCover %>" alt="<%= post.title %>" loading="lazy">
+    </a>
+  <% } %>
+
+  <!-- 文章信息 -->
+  <div class="post-card-info">
+    <!-- 分类标签 -->
+    <% if (post.categories && post.categories.length) { %>
+      <div class="post-card-meta-top">
+        <% post.categories.forEach(function(cat) { %>
+          <a href="<%- url_for(cat.path) %>" class="post-card-category">
+            <i class="fas fa-folder"></i> <%= cat.name %>
+          </a>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <!-- 文章标题 -->
+    <h2 class="post-card-title">
+      <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+    </h2>
+
+    <!-- 文章摘要 -->
+    <p class="post-card-excerpt">
+      <%= post.excerpt ? strip_html(post.excerpt).substring(0, 120) + '...' : strip_html(post.content).substring(0, 120) + '...' %>
+    </p>
+
+    <!-- 文章元信息 -->
+    <div class="post-card-meta">
+      <span class="meta-item">
+        <i class="far fa-calendar-alt"></i>
+        <%= date(post.date, 'YYYY-MM-DD') %>
+      </span>
+      <% if (post.tags && post.tags.length) { %>
+        <span class="meta-item">
+          <i class="fas fa-tags"></i>
+          <% var tagArr = []; post.tags.forEach(function(tag){ tagArr.push(tag.name); }); %>
+          <%= tagArr.slice(0, 3).join(' / ') %>
+        </span>
+      <% } %>
+    </div>
+  </div>
+</article>

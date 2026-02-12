@@ -1,0 +1,39 @@
+<!-- 首页布局 -->
+
+<!-- 首页 Hero 横幅区域 -->
+<section class="hero" style="background-image: url('<%= theme.cover.home_bg %>')">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img src="<%= theme.author.avatar %>" alt="头像" class="hero-avatar">
+    <h1 class="hero-title"><%= config.title %></h1>
+    <p class="hero-subtitle"><%= config.subtitle %></p>
+    <!-- 社交图标 -->
+    <div class="hero-social">
+      <% if (theme.author.social.github) { %>
+        <a href="<%= theme.author.social.github %>" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      <% } %>
+      <% if (theme.author.social.email) { %>
+        <a href="<%= theme.author.social.email %>"><i class="fas fa-envelope"></i></a>
+      <% } %>
+    </div>
+    <!-- 向下滚动箭头 -->
+    <a href="#posts-section" class="hero-scroll-down">
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </div>
+</section>
+
+<!-- 文章列表区域 -->
+<section class="posts-section" id="posts-section">
+  <div class="container">
+    <h2 class="section-title"><i class="fas fa-feather-alt"></i> 最新文章</h2>
+    <div class="posts-grid">
+      <% page.posts.forEach(function(post) { %>
+        <%- partial('_partial/post-card', { post: post }) %>
+      <% }) %>
+    </div>
+
+    <!-- 分页 -->
+    <%- partial('_partial/pagination') %>
+  </div>
+</section>

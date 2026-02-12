@@ -1,0 +1,120 @@
+# ==========================================
+# Hexo 博客主配置文件
+# 文档: https://hexo.io/docs/configuration
+# ==========================================
+
+# 站点信息
+title: ZhenWusi's Blog
+subtitle: '记录技术与生活'
+description: '一个热爱技术的开发者的个人博客，分享编程、技术和生活感悟。'
+keywords:
+  - 技术博客
+  - 前端开发
+  - 编程学习
+author: ZhenWusi
+language: zh-CN
+timezone: 'Asia/Shanghai'
+
+# 网址配置
+url: https://zhenwusi.github.io
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+pretty_urls:
+  trailing_index: true
+  trailing_html: true
+
+# 目录配置
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# 写作配置
+new_post_name: :title.md
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+syntax_highlighter: highlight.js
+highlight:
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  preprocess: true
+  line_number: true
+  tab_replace: ''
+
+# 首页配置
+index_generator:
+  path: ''
+  per_page: 8
+  order_by: -date
+
+# 分类 & 标签
+default_category: uncategorized
+category_map:
+tag_map:
+
+# 日期格式
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+updated_option: 'mtime'
+
+# 分页
+per_page: 8
+pagination_dir: page
+
+# 主题
+theme: flavor
+
+# 部署到 GitHub Pages
+deploy:
+  type: git
+  repo: https://github.com/ZhenWusi/ZhenWusi.github.io.git
+  branch: main
+  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+
+# RSS 订阅
+feed:
+  enable: true
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+
+# 站点地图
+sitemap:
+  path: sitemap.xml
+  rel: false
+  tags: true
+  categories: true
+
+# 搜索
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
+
+# 字数统计
+wordcount:
+  enable: true

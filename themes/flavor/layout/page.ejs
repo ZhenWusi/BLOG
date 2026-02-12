@@ -1,0 +1,86 @@
+<!-- 独立页面布局（关于、友链等） -->
+
+<%
+/* 根据页面类型选择不同的渲染方式 */
+var pageType = page.type || '';
+%>
+
+<!-- 页面顶部横幅 -->
+<section class="page-banner" style="background-image: url('<%= theme.cover.home_bg %>')">
+  <div class="hero-overlay"></div>
+  <div class="page-banner-content">
+    <h1><%= page.title %></h1>
+  </div>
+</section>
+
+<div class="container page-container">
+  <% if (pageType === 'friends') { %>
+    <!-- ========== 友链页面 ========== -->
+    <div class="page-body markdown-body">
+      <%- page.content %>
+    </div>
+    <div class="friends-grid">
+      <% if (theme.friends && theme.friends.length) { %>
+        <% theme.friends.forEach(function(friend) { %>
+          <a href="<%= friend.url %>" target="_blank" rel="noopener" class="friend-card">
+            <img src="<%= friend.avatar %>" alt="<%= friend.name %>" class="friend-avatar" loading="lazy">
+            <div class="friend-info">
+              <h3><%= friend.name %></h3>
+              <p><%= friend.desc %></p>
+            </div>
+          </a>
+        <% }) %>
+      <% } %>
+    </div>
+
+  <% } else if (pageType === 'categories') { %>
+    <!-- ========== 分类页面 ========== -->
+    <div class="categories-page">
+      <% if (site.categories.length) { %>
+        <div class="category-list">
+          <% site.categories.sort('name').forEach(function(cat) { %>
+            <a href="<%- url_for(cat.path) %>" class="category-item">
+              <i class="fas fa-folder"></i>
+              <span class="cat-name"><%= cat.name %></span>
+              <span class="cat-count"><%= cat.posts.length %></span>
+            </a>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <p class="empty-tip">暂无分类</p>
+      <% } %>
+    </div>
+
+  <% } else if (pageType === 'tags') { %>
+    <!-- ========== 标签页面 ========== -->
+    <div class="tags-page">
+      <% if (site.tags.length) { %>
+        <div class="tag-cloud">
+          <% site.tags.sort('name').forEach(function(tag) { %>
+            <%
+              /* 根据文章数量计算标签大小 */
+              var fontSize = 0.8 + (tag.posts.length * 0.15);
+              if (fontSize > 2) fontSize = 2;
+            %>
+            <a href="<%- url_for(tag.path) %>" class="tag-cloud-item"
+               style="font-size: <%= fontSize %>rem;">
+              <i class="fas fa-hashtag"></i><%= tag.name %>
+              <sup><%= tag.posts.length %></sup>
+            </a>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <p class="empty-tip">暂无标签</p>
+      <% } %>
+    </div>
+
+  <% } else { %>
+    <!-- ========== 普通页面（关于等） ========== -->
+    <article class="page-body markdown-body">
+      <%- page.content %>
+    </article>
+
+    <!-- 页面也可以有评论 -->
+    <%- partial('_partial/comment') %>
+  <% } %>
+</div>

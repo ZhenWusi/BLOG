@@ -1,0 +1,54 @@
+<!-- 归档页面布局 -->
+
+<!-- 页面顶部横幅 -->
+<section class="page-banner" style="background-image: url('<%= theme.cover.home_bg %>')">
+  <div class="hero-overlay"></div>
+  <div class="page-banner-content">
+    <%
+    /* 判断是分类归档还是标签归档还是普通归档 */
+    var archiveTitle = '文章归档';
+    if (page.category) archiveTitle = '分类：' + page.category;
+    if (page.tag) archiveTitle = '标签：' + page.tag;
+    %>
+    <h1><%= archiveTitle %></h1>
+    <p>共 <%= page.posts.length %> 篇文章</p>
+  </div>
+</section>
+
+<div class="container archive-container">
+  <%
+  /* 按年份分组文章 */
+  var years = {};
+  page.posts.forEach(function(post) {
+    var year = date(post.date, 'YYYY');
+    if (!years[year]) years[year] = [];
+    years[year].push(post);
+  });
+  var sortedYears = Object.keys(years).sort(function(a, b) { return b - a; });
+  %>
+
+  <!-- 时间线归档列表 -->
+  <div class="archive-timeline">
+    <% sortedYears.forEach(function(year) { %>
+      <div class="archive-year">
+        <h2 class="year-title"><i class="fas fa-calendar"></i> <%= year %> 年</h2>
+        <ul class="archive-list">
+          <% years[year].forEach(function(post) { %>
+            <li class="archive-item">
+              <span class="archive-date"><%= date(post.date, 'MM-DD') %></span>
+              <a href="<%- url_for(post.path) %>" class="archive-link"><%= post.title %></a>
+              <% if (post.categories && post.categories.length) { %>
+                <% post.categories.forEach(function(cat) { %>
+                  <span class="archive-cat"><i class="fas fa-folder"></i> <%= cat.name %></span>
+                <% }) %>
+              <% } %>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    <% }) %>
+  </div>
+
+  <!-- 分页 -->
+  <%- partial('_partial/pagination') %>
+</div>

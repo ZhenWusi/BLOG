@@ -1,0 +1,34 @@
+<!-- 网易云音乐播放器 -->
+<div class="music-player" id="music-player">
+  <!-- 播放器切换按钮（悬浮在页面右下角） -->
+  <button class="music-toggle" id="music-toggle" title="音乐播放器">
+    <i class="fas fa-music"></i>
+  </button>
+
+  <!-- 播放器面板 -->
+  <div class="music-panel" id="music-panel">
+    <div class="music-panel-header">
+      <span><i class="fas fa-headphones"></i> 音乐播放器</span>
+      <button class="music-panel-close" id="music-panel-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="music-panel-body">
+      <!-- 使用网易云音乐外链播放器 -->
+      <% if (theme.music.netease_playlist_id) { %>
+        <iframe
+          frameborder="no"
+          border="0"
+          marginwidth="0"
+          marginheight="0"
+          width="100%"
+          height="450"
+          src="//music.163.com/outchain/player?type=0&id=<%= theme.music.netease_playlist_id %>&auto=<%= theme.music.autoplay ? 1 : 0 %>&height=430"
+          loading="lazy">
+        </iframe>
+      <% } else { %>
+        <p class="music-empty">暂未配置歌单，请在主题配置中设置网易云歌单 ID。</p>
+      <% } %>
+    </div>
+  </div>
+</div>

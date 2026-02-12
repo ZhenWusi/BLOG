@@ -1,0 +1,96 @@
+# ==========================================
+# Flavor 主题配置文件
+# ==========================================
+
+# 导航菜单
+menu:
+  首页: /
+  归档: /archives
+  分类: /categories
+  标签: /tags
+  友链: /friends
+  关于: /about
+
+# 个人信息
+author:
+  name: ZhenWusi
+  avatar: https://picsum.photos/seed/avatar2024/200/200
+  description: "热爱技术，热爱生活 🚀"
+  social:
+    github: https://github.com/ZhenWusi
+    email: mailto:zhenwusi@example.com
+
+# 首页封面
+cover:
+  # 首页大图（Unsplash 精选）
+  home_bg: https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=80
+  # 默认文章封面图（随机精选）
+  default_post_covers:
+    - https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80
+    - https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80
+    - https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80
+    - https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80
+    - https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&q=80
+    - https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80
+    - https://images.unsplash.com/photo-1607799279861-4dd421887fc5?w=800&q=80
+    - https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=800&q=80
+
+# 侧边栏
+sidebar:
+  enable: true
+  position: right
+  widgets:
+    - profile
+    - recent_posts
+    - categories
+    - tags
+
+# 文章配置
+post:
+  toc: true
+  word_count: true
+  read_time: true
+  copyright: true
+
+# 评论系统 - 使用 Utterances（基于 GitHub Issues）
+comments:
+  enable: true
+  type: utterances
+  utterances:
+    repo: ZhenWusi/ZhenWusi.github.io
+    issue_term: pathname
+    theme: github-light
+    label: 💬 评论
+
+# 音乐播放器 - 网易云音乐
+music:
+  enable: true
+  # 网易云音乐歌单 ID（可替换为你自己的歌单）
+  netease_playlist_id: 7293820687
+  autoplay: false
+
+# 友情链接
+friends:
+  - name: Hexo
+    url: https://hexo.io/
+    avatar: https://hexo.io/icon/favicon-196x196.png
+    desc: 快速、简洁且高效的博客框架
+  - name: GitHub
+    url: https://github.com
+    avatar: https://github.githubassets.com/favicons/favicon-dark.svg
+    desc: 全球最大的代码托管平台
+  - name: MDN Web Docs
+    url: https://developer.mozilla.org/
+    avatar: https://developer.mozilla.org/favicon-48x48.png
+    desc: Web 技术权威文档
+
+# 页脚
+footer:
+  since: 2025
+  icp: ""
+  powered: true
+
+# 统计（可选）
+analytics:
+  enable: false
+  google_analytics_id: ""
