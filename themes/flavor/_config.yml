@@ -14,7 +14,7 @@ menu:
 # 个人信息
 author:
   name: ZhenWusi
-  avatar: https://picsum.photos/seed/avatar2024/200/200
+  avatar: /img/头像.jpg
   description: "热爱技术，热爱生活 🚀"
   social:
     github: https://github.com/ZhenWusi
@@ -22,8 +22,8 @@ author:
 
 # 首页封面
 cover:
-  # 首页大图（Unsplash 精选）
-  home_bg: https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=80
+  # 首页大图（随机选择本地背景图）
+  home_bg: /img/background/
   # 默认文章封面图（随机精选）
   default_post_covers:
     - https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80
