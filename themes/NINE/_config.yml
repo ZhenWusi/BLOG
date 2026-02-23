@@ -26,7 +26,20 @@ cover:
   home_bg: /img/background/
   # 默认文章封面图（随机精选）
   default_post_covers:
-  
+
+# 背景多媒体配置
+background:
+  enable: true
+  images:
+    - /img/background/jk-制服-动漫女孩.png
+    - /img/background/云彩-夜晚-夜景.png
+    - /img/background/城市-夕阳.png
+    - /img/background/星空-风景.png
+  videos:
+    - /img/background/二次元-动态壁纸.mp4
+    - /img/background/太空人-宇宙遨游.mp4
+  fallback_color: '#d6ecff'
+
 # 侧边栏
 sidebar:
   enable: true

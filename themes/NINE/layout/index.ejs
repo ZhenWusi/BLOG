@@ -1,24 +1,30 @@
 <!-- 首页布局 -->
 
 <!-- 首页 Hero 横幅区域 -->
-<% 
-// 获取背景图片/视频列表
-const backgroundFiles = ['jk-制服-动漫女孩.png', '云彩-夜晚-夜景.png', '城市-夕阳.png', '星空-风景.png'];
-const backgroundVideos = ['二次元-动态壁纸.mp4', '太空人-宇宙遨游.mp4'];
-const allBackgrounds = [...backgroundFiles.map(f => `/img/background/${f}`), ...backgroundVideos.map(v => `/img/background/${v}`)];
-const randomBackground = allBackgrounds[Math.floor(Math.random() * allBackgrounds.length)];
-const isVideo = randomBackground.endsWith('.mp4');
+<%
+const bgConfig = theme.background || {};
+const enableBackground = bgConfig.enable !== false;
+const imageList = (bgConfig.images || []).filter(Boolean);
+const videoList = (bgConfig.videos || []).filter(Boolean);
+const fallbackColor = bgConfig.fallback_color || '#d6ecff';
+const mediaList = enableBackground ? [...imageList, ...videoList] : [];
+const hasMedia = mediaList.length > 0;
+const randomBackground = hasMedia ? mediaList[Math.floor(Math.random() * mediaList.length)] : null;
+const isVideo = randomBackground ? randomBackground.endsWith('.mp4') : false;
 %>
 
 <section class="hero" id="hero-section">
-  <% if (isVideo) { %>
+  <% if (randomBackground && isVideo) { %>
     <!-- 视频背景 -->
     <video autoplay muted loop id="hero-video">
       <source src="<%= randomBackground %>" type="video/mp4">
     </video>
-  <% } else { %>
+  <% } else if (randomBackground) { %>
     <!-- 图片背景 -->
     <div class="hero-bg" style="background-image: url('<%= randomBackground %>')"></div>
+  <% } else { %>
+    <!-- 纯色背景 -->
+    <div class="hero-bg" style="background-color: <%= fallbackColor %>;"></div>
   <% } %>
   <div class="hero-overlay"></div>
   <div class="hero-content">

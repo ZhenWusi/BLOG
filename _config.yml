@@ -120,7 +120,7 @@ wordcount:
 deploy:
   type: git
   repo: https://github.com/ZhenWusi/ZhenWusi.github.io.git
-  branch: gh-pages
+  branch: main
 
 # MathJax 数学公式渲染
 mathjax:
