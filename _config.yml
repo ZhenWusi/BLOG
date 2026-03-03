@@ -119,21 +119,14 @@ wordcount:
 # 部署配置
 deploy:
   type: git
-  repo: https://github.com/ZhenWusi/ZhenWusi.github.io.git
+  repo: git@github.com:ZhenWusi/ZhenWusi.github.io.git
   branch: main
 
-# MathJax 数学公式渲染
+# MathJax 数学公式 (使用 hexo-filter-mathjax)
 mathjax:
-  enable: true
-  per_page: false
-  engine: 'mathjax'
-  cdn: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
-  config:
-    tex:
-      inlineMath: [['$', '$'], ['\\(', '\\)']]
-      displayMath: [['$$', '$$'], ['\\[', '\\]']]
-      tags: 'ams'
-    options:
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-      ignoreHtmlClass: 'tex2jax_ignore'
-      processHtmlClass: 'tex2jax_process'
+  tags: none
+  single_dollars: true
+  cjk_width: 0.9
+  normal_width: 0.6
+  append_css: true
+  every_page: false
